@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="helpdesk_ticket_view_form_inherit">
+            <field name="name">helpdesk.ticket.form.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="canal_type" placeholder="Canales"/>
+                    <field name="clasificacion_ticket" placeholder="Clasificación"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="helpdesk_tickets_view_tree_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.tree.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree" />
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="clasificacion_ticket" optional="show"/>
+                <!--<field name="contar" type="measure"/>-->
+                <field name="tiempo_progress" optional="show" avg="Promedio de tiempo en progreso"/>
+                <field name="tiempo_completado" optional="show" avg="Promedio de tiempo en completado"/>
+                <field name="tiempo_anulado" optional="show" avg="Promedio de tiempo en anulado"/>
+                <field name="partner_id" optional="show"/>
+                <field name="user_id" optional="show"/>
+                <field name="stage_id" optional="show"/>
+
+           </xpath>
+            </field>
+        </record>
+helpdesk.ticket.report.analysis.graph
+        <record id="helpdesk_tickets_view_tree_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.tree.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree" />
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="clasificacion_ticket" optional="show"/>
+                <!--<field name="contar" type="measure"/>-->
+                <field name="tiempo_progress" optional="show" avg="Promedio de tiempo en progreso"/>
+                <field name="tiempo_completado" optional="show" avg="Promedio de tiempo en completado"/>
+                <field name="tiempo_anulado" optional="show" avg="Promedio de tiempo en anulado"/>
+                <field name="partner_id" optional="show"/>
+                <field name="user_id" optional="show"/>
+                <field name="stage_id" optional="show"/>
+
+           </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ticket_view_form_inherit">
+            <field name="name">helpdesk.ticket.form.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description']" position="after">
+                    <notebook>
+                        <page string="timer">
+                            <field name="start_timer" widget="float_time" string="Start Time"/>
+                            <field name="stop" string="Detenerse"/>
+                            <field name="status_ticket" string="Status Ticket"/>
+                            <field name="tiempo_progress" string="Tiempo Progreso"/>
+                            <field name="tiempo_completado" string="Tiempo Completado"/>
+                            <field name="tiempo_anulado" string="Tiempo Anulado"/>
+                            <field name="progress" string="Progresoo" invisible="1"/>
+                            <field name="completed" string="Completado" invisible="1"/>
+                            <field name="cancelled" string="Cancelado" invisible="1"/>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
