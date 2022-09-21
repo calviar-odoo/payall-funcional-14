@@ -6,10 +6,14 @@
             <field name="name">subclasificacion.ticket.form</field>
             <field name="model">subclasificacion.ticket</field>
             <field name="arch" type="xml">
-                <form string="Subclasificacion Form">
+                <form string="Sub-Categoria Form">
                     <sheet>
-                        <field name="name" placeholder="Subclasificacion"/>
-                        <field name="clasificacion_ids"/>
+                        <group>
+                            <field name="name" placeholder="Sub-Categoria"/>
+                        </group>
+                        <group>
+                            <field name="clasificacion_id"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -19,7 +23,7 @@
             <field name="name">subclasificacion.ticket.list</field>
             <field name="model">subclasificacion.ticket</field>
             <field name="arch" type="xml">
-                <tree string="Subclasificacion List">
+                <tree string="Sub-Categoria List">
                     <field name="name" />
                 </tree>
             </field>
@@ -31,18 +35,18 @@
             <field name="arch" type="xml">
                 <graph string="Helpdesk Ticket Type Analysis" stacked="True" sample="1">
                     <field name="name" type="col"/>
-                    <field name="clasificacion_ids" type="measure" widget="percentage"/>
+                    <field name="clasificacion_id" type="measure" widget="percentage"/>
                 </graph>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="subclasificacion_ticket_list_action">
-            <field name="name">Subclasificacion</field>
+            <field name="name">Sub-Categoria</field>
             <field name="res_model">subclasificacion.ticket</field>
             <field name="view_mode">tree,form,pivot,graph</field>
-            <field name="help" type="html"> <p class="o_view_nocontent_smiling_face"> Agregar Nueva Subclasificacion </p> </field>
+            <field name="help" type="html"> <p class="o_view_nocontent_smiling_face"> Agregar Nueva Sub-Categoria</p> </field>
         </record>
 
-        <menuitem id="menu_subclasificacion" name="Subclasificacion Ticket" parent="helpdesk.helpdesk_menu_config" sequence="38"  action="subclasificacion_ticket_list_action"/>
+        <menuitem id="menu_subclasificacion" name="Sub-Categoria Ticket" parent="helpdesk.helpdesk_menu_config" sequence="38"  action="subclasificacion_ticket_list_action"/>
     </data>
 </odoo>

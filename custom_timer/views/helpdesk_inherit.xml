@@ -8,11 +8,11 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='tag_ids']" position="replace">
                     <field name="tag_ids" invisible="1"/>
-                    <field name="canal_type" placeholder="Canales"/>
-                    <field name="clasificacion_ticket" placeholder="Clasificación"/>
                 </xpath>
                 <xpath expr="//field[@name='email_cc']" position="after">
-                    <field name="subclasificacion_ticket" placeholder="Sub-clasificación"/>
+                    <field name="alias_ticket" placeholder="Alias"/>
+                    <field name="clasificacion_ticket" placeholder="Categoria"/>
+                    <field name="subclasificacion_ticket" placeholder="Sub-Categoria"/>
                 </xpath>
             </field>
         </record>

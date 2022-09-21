@@ -23,6 +23,7 @@
         "security/ir.model.access.csv",
         "security/timer_security.xml",
         "views/helpdesk_inherit.xml",
+        "views/res_alias.xml",
         "views/clasificacion_ticket.xml",
         "views/subclasificacion_ticket.xml",
         "views/res_canales.xml",

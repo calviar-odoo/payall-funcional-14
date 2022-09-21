@@ -14,8 +14,9 @@ class TicketCustomTimer(models.Model):
     team_id = fields.Many2one(required=True)
     user_id = fields.Many2one('res.users', string='Assigned to', default=lambda self: self._get_user(), required=True)
     canal_type = fields.Many2one('res.canales', string='Canal', index=True)
-    clasificacion_ticket = fields.Many2one('clasificacion.ticket', string='Clasificación', index=True)
-    subclasificacion_ticket = fields.Many2one('subclasificacion.ticket', string='Sub-Clasificación', index=True)
+    alias_ticket = fields.Many2one('res.alias', string='Alias', index=True)
+    clasificacion_ticket = fields.Many2one('clasificacion.ticket', string='Categoria', index=True)
+    subclasificacion_ticket = fields.Many2one('subclasificacion.ticket', string='Sub-Categoria', index=True)
     contar = fields.Float("MeasureCuenta", compute='_calculate_percentage', compute_sudo=True, store=True)
 
     team_timer = fields.Float(string='Team Timer')
@@ -87,7 +88,7 @@ class TicketCustomTimer(models.Model):
     @api.onchange('clasificacion_ticket')
     def _get_user(self):
         for record in self:
-            return {'domain': {'subclasificacion_ticket': [('clasificacion_ids', '=', record.clasificacion_ticket.id)]}}
+            return {'domain': {'subclasificacion_ticket': [('clasificacion_id', '=', record.clasificacion_ticket.id)]}}
 
     @api.model
     def _calculate_percentage(self):

@@ -8,9 +8,8 @@ class SubClasificacionTicket(models.Model):
     _name = 'subclasificacion.ticket'
     _description = 'Clasificación de los tickets'
 
-    name = fields.Char(string='Subcategoria')
-    clasificacion_ids = fields.One2many(string="Clasificaciones", comodel_name="clasificacion.ticket",
-                                        inverse_name="subclasificacion_id")
+    name = fields.Char(string='Sub-categoria')
+    clasificacion_id = fields.Many2one(string="Categoria", comodel_name="clasificacion.ticket")
     contar = fields.Float("MeasureCuentaClasifc", compute='_calculate_percentage', compute_sudo=True, store=True)
 
     @api.model
