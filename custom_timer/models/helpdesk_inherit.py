@@ -85,8 +85,13 @@ class TicketCustomTimer(models.Model):
         for record in self:
             return {'domain': {'user_id': [('helpdesk_team_id', '=', record.team_id.id)]}}
 
+    @api.onchange('alias_ticket')
+    def _get_categoria(self):
+        for record in self:
+            return {'domain': {'clasificacion_ticket': [('alias', '=', record.alias_ticket.id)]}}
+
     @api.onchange('clasificacion_ticket')
-    def _get_user(self):
+    def _get_subcategoria(self):
         for record in self:
             return {'domain': {'subclasificacion_ticket': [('clasificacion_id', '=', record.clasificacion_ticket.id)]}}
 
